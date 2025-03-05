@@ -11,12 +11,19 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       color: Color.fromARGB(166, 7, 167, 119),
       home: DefaultTabController(
-        length: 3,
+        length: 3, // Fixed: Tab count should match TabBarView children
         child: Scaffold(
           backgroundColor: Colors.lightGreenAccent,
           appBar: AppBar(
-            actions: [Icon(Icons.settings)],
             title: Text('Tab Example'),
+            actions: [
+              IconButton(
+                icon: Icon(Icons.settings), // Fixed: Made it clickable
+                onPressed: () {
+                  print("Settings Clicked");
+                },
+              ),
+            ],
             bottom: TabBar(
               tabs: [Tab(text: "Tab1"), Tab(text: "Tab2"), Tab(text: "Tab3")],
             ),
@@ -30,10 +37,19 @@ class MyApp extends StatelessWidget {
                 ),
               ),
               Center(
-                child: TextButton.icon(onPressed: () {}, label: Text('Protik')),
+                child: TextButton.icon(
+                  onPressed: () {},
+                  icon: Icon(Icons.star), // Fixed: Added an icon
+                  label: Text('Protik'), // Fixed: Removed the List
+                ),
               ),
-              Center(child: Text('Content of Tab 2')),
-              Center(child: Text('Content of Tab 3')),
+              Center(
+                child: TextButton.icon(
+                  onPressed: () {},
+                  icon: Icon(Icons.star), // Fixed: Added an icon
+                  label: Text('Content of Tab 1'), // Fixed: Removed the List
+                ),
+              ),
             ],
           ),
         ),
